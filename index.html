@@ -1,128 +1,107 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Приглашение 💌</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Приглашение</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Marck+Script&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <canvas id="bg-canvas"></canvas>
-  <div class="bg-glow"></div>
 
-  <!-- SCREEN 1 -->
-  <section class="screen active" id="screen-1">
-    <div class="screen-inner">
-      <span class="deco-line"></span>
-      <p class="eyebrow">Для тебя</p>
-      <h1 class="hero-title">Пойдёшь<br>со мной<br><em>на свидание?</em></h1>
-      <p class="hero-sub">У меня есть кое-что особенное&nbsp;для нас двоих</p>
-      <div class="btns" id="btns-wrap">
-        <button class="btn btn--yes" id="btn-yes">Да, конечно ✨</button>
-        <button class="btn btn--no" id="btn-no">Нет</button>
-      </div>
+<canvas id="bg-canvas"></canvas>
+
+<main id="app">
+
+  <!-- ЭКРАН ЗАГРУЗКИ -->
+  <section class="screen screen--loading" id="screen-loading" data-active="true">
+    <div class="loader-heart">♥</div>
+  </section>
+
+  <!-- ЭКРАН 1 -->
+  <section class="screen" id="screen-1">
+    <p class="eyebrow">У меня вопрос</p>
+    <h1 class="title">Пойдёшь со мной<br>на свидание?</h1>
+    <div class="btn-row" id="btn-row-1">
+      <button class="btn btn--yes" id="btn-yes">Да</button>
+      <button class="btn btn--no" id="btn-no">Нет</button>
     </div>
   </section>
 
-  <!-- SCREEN 2 -->
+  <!-- ЭКРАН 2 -->
   <section class="screen" id="screen-2">
-    <div class="screen-inner">
-      <span class="big-emoji">🥹</span>
-      <h2 class="section-title">Ооо, ты правда<br>хочешь пойти<br><em>со мной?</em></h2>
-      <p class="section-text">Это просто невероятно…<br>Я уже так рад!</p>
-      <button class="btn btn--primary" id="btn-s2">Продолжить →</button>
-    </div>
+    <div class="emoji-pop">🥹</div>
+    <h2 class="title title--mid">Ооо, ты правда хочешь<br>пойти со мной на свидание?<br><span class="accent">Это круто.</span></h2>
+    <button class="btn btn--yes" id="btn-next-2">Далее</button>
   </section>
 
-  <!-- SCREEN 3 -->
+  <!-- ЭКРАН 3 -->
   <section class="screen" id="screen-3">
-    <div class="screen-inner screen-inner--wide">
-      <h2 class="section-title" style="margin-top:.5rem">Куда пойдём?</h2>
-      <p class="section-text">Выбери место для нашего свидания</p>
+    <p class="eyebrow">Шаг первый</p>
+    <h2 class="title title--mid">Куда пойдём?</h2>
+    <div class="cards" id="place-cards">
+      <button class="card" data-place="Кино">
+        <span class="card__icon">🎬</span>
+        <span class="card__label">Кино</span>
+      </button>
+      <button class="card" data-place="Ресторан">
+        <span class="card__icon">🍽️</span>
+        <span class="card__label">Ресторан</span>
+      </button>
+      <button class="card" data-place="Прогулка">
+        <span class="card__icon">🌆</span>
+        <span class="card__label">Прогулка</span>
+      </button>
+      <button class="card" data-place="Кофе">
+        <span class="card__icon">☕</span>
+        <span class="card__label">Кофе</span>
+      </button>
+    </div>
 
-      <div class="place-grid" id="place-grid">
-        <button class="place-card" data-value="Кино">
-          <span class="pc-icon">🎬</span>
-          <span class="pc-name">Кино</span>
-        </button>
-        <button class="place-card" data-value="Ресторан">
-          <span class="pc-icon">🍷</span>
-          <span class="pc-name">Ресторан</span>
-        </button>
-        <button class="place-card" data-value="Прогулка">
-          <span class="pc-icon">🌸</span>
-          <span class="pc-name">Прогулка</span>
-        </button>
-        <button class="place-card" data-value="Пикник">
-          <span class="pc-icon">🧺</span>
-          <span class="pc-name">Пикник</span>
-        </button>
-        <button class="place-card" data-value="Кафе">
-          <span class="pc-icon">☕</span>
-          <span class="pc-name">Кафе</span>
-        </button>
-        <button class="place-card" data-value="Концерт">
-          <span class="pc-icon">🎵</span>
-          <span class="pc-name">Концерт</span>
-        </button>
+    <div class="datetime-block" id="datetime-block">
+      <p class="eyebrow">Шаг второй</p>
+      <h2 class="title title--mid">Когда?</h2>
+      <div class="field-row">
+        <label class="field">
+          <span class="field__label">Дата</span>
+          <input type="date" id="input-date" class="field__input">
+        </label>
+        <label class="field">
+          <span class="field__label">Время</span>
+          <input type="time" id="input-time" class="field__input">
+        </label>
       </div>
-
-      <div class="dt-wrap" id="dt-wrap">
-        <div class="dt-row">
-          <div class="dt-field">
-            <label class="dt-label" for="inp-date">Дата</label>
-            <input type="date" id="inp-date" class="dt-input">
-          </div>
-          <div class="dt-field">
-            <label class="dt-label" for="inp-time">Время</label>
-            <input type="time" id="inp-time" class="dt-input">
-          </div>
-        </div>
-        <button class="btn btn--primary" id="btn-submit">Отправить 💌</button>
-      </div>
+      <button class="btn btn--yes btn--wide" id="btn-submit" disabled>Отправить</button>
     </div>
   </section>
 
-  <!-- SCREEN 4 -->
+  <!-- ЭКРАН 4 -->
   <section class="screen" id="screen-4">
     <canvas id="confetti-canvas"></canvas>
-    <div class="screen-inner">
-      <div class="ticket" id="ticket">
-        <div class="ticket-top">
-          <span class="orn">✦ &nbsp; ✦ &nbsp; ✦</span>
-          <span class="ticket-label">Ты приглашена</span>
-        </div>
-        <div class="ticket-title">Свидание</div>
-        <div class="ticket-divider">
-          <span class="div-line"></span>
-          <span class="div-heart">❤</span>
-          <span class="div-line"></span>
-        </div>
-        <div class="ticket-details">
-          <div class="ticket-row">
-            <span class="ticket-key">Место</span>
-            <span class="ticket-val" id="s-place">—</span>
-          </div>
-          <div class="ticket-row">
-            <span class="ticket-key">Дата</span>
-            <span class="ticket-val" id="s-date">—</span>
-          </div>
-          <div class="ticket-row">
-            <span class="ticket-key">Время</span>
-            <span class="ticket-val" id="s-time">—</span>
-          </div>
-        </div>
-        <div class="ticket-footer">
-          <p class="ticket-sign">Увидимся скоро 💌</p>
-          <span class="orn" style="font-size:.65rem">✦</span>
-        </div>
+    <div class="ticket">
+      <p class="ticket__eyebrow">Приглашение принято</p>
+      <h2 class="ticket__title">Увидимся скоро</h2>
+      <div class="ticket__divider"></div>
+      <div class="ticket__row">
+        <span class="ticket__label">Место</span>
+        <span class="ticket__value" id="result-place">—</span>
       </div>
+      <div class="ticket__row">
+        <span class="ticket__label">Дата</span>
+        <span class="ticket__value" id="result-date">—</span>
+      </div>
+      <div class="ticket__row">
+        <span class="ticket__label">Время</span>
+        <span class="ticket__value" id="result-time">—</span>
+      </div>
+      <div class="ticket__heart">♥</div>
     </div>
   </section>
 
-  <script src="script.js"></script>
+</main>
+
+<script type="module" src="script.js"></script>
 </body>
 </html>
