@@ -14,11 +14,11 @@
 *{box-sizing:border-box;margin:0;padding:0;}
 
 html,body{
-  height:100%;
+  min-height:100%;
   background:radial-gradient(ellipse at 50% 0%, var(--wine-800) 0%, var(--wine-950) 70%);
+  background-attachment:fixed;
   color:var(--cream);
   font-family:'Inter',sans-serif;
-  overflow:hidden;
   -webkit-tap-highlight-color:transparent;
 }
 
@@ -34,19 +34,19 @@ html,body{
 #app{
   position:relative;
   z-index:1;
-  height:100dvh;
   width:100%;
+  min-height:100dvh;
 }
 
 .screen{
-  position:absolute;
-  inset:0;
   display:none;
   flex-direction:column;
   align-items:center;
   justify-content:center;
   text-align:center;
-  padding:8vh 6vw;
+  width:100%;
+  min-height:100dvh;
+  padding:8vh 6vw 5vh;
   gap:2rem;
   opacity:0;
 }
@@ -229,20 +229,20 @@ html,body{
 
 /* Datetime block */
 .datetime-block{
-  display:flex;
+  display:none;
   flex-direction:column;
   align-items:center;
   gap:1.1rem;
-  max-height:0;
-  overflow:hidden;
   opacity:0;
-  transition:max-height .5s ease, opacity .5s ease, margin .5s ease;
+  transform:translateY(-8px);
+  transition:opacity .4s ease, transform .4s ease;
   width:100%;
 }
 
 .datetime-block.open{
-  max-height:420px;
+  display:flex;
   opacity:1;
+  transform:translateY(0);
   margin-top:.5rem;
 }
 
